@@ -1,0 +1,225 @@
+.film-carousel {
+  position: relative;
+  width: 100vw;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.film-track {
+  display: flex;
+  gap: 0; 
+  animation: scroll 60s linear infinite;
+  list-style: none; /* Remove bullets */
+  padding: 0;
+  margin: 0;
+}
+
+.film-track:hover {
+  animation-play-state: paused;
+}
+
+/* Add this class for when modal is open */
+.film-track.paused {
+  animation-play-state: paused !important;
+}
+
+.film-frame {
+  width: 300px; 
+  height: 220px;
+  background: #ffffff; 
+  padding: 20px 10px;
+  position: relative; 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 4px solid #333; 
+  border-bottom: 4px solid #333;
+  flex-shrink: 0;
+  cursor: pointer; /* Indicate clickable */
+}
+
+/* Film holes - Top */
+.film-frame::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background-image: linear-gradient(to right, #333 50%, transparent 50%);
+  background-size: 20px 100%; 
+}
+
+/* Film holes - Bottom */
+.film-frame::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background-image: linear-gradient(to right, #333 50%, transparent 50%);
+  background-size: 20px 100%;
+}
+
+.film-frame:hover {
+  transform: scale(1.02);
+  z-index: 10;
+  transition: transform 0.3s ease;
+}
+
+.film-img {
+  width: 280px;
+  height: 180px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+.scroller {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.scroller__inner {
+  padding-block: 1rem;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0; 
+  animation: scroll 40s linear infinite;
+  width: max-content; 
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50%)); 
+  }
+}
+
+/* --- Modal Styles (Redesigned as Note Panel) --- */
+.image-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); 
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.note-modal-card {
+  background: #fff;
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  position: relative;
+  overflow: hidden;
+  /* Paper texture effect */
+  background-image: radial-gradient(#f0f0f0 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.modal-polaroid-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-polaroid {
+  background: white;
+  padding: 15px 15px 50px 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transform: rotate(-2deg);
+  width: 100%;
+  max-width: 350px;
+}
+
+.modal-img {
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-text-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.modal-caption-header {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  color: #ec4899;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.modal-caption-body {
+  font-family: 'Mali', sans-serif;
+  font-size: 1.3rem;
+  color: #555;
+  line-height: 1.6;
+  white-space: pre-wrap; /* Preserve newlines */
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.3s;
+  z-index: 10;
+  line-height: 1;
+}
+
+.close-modal-btn:hover {
+  color: #ec4899;
+}
+
+@media (max-width: 768px) {
+  .note-modal-card {
+    flex-direction: column;
+    padding: 1.5rem;
+    max-height: 85vh;
+    overflow-y: auto;
+    gap: 1rem;
+  }
+  
+  .modal-polaroid {
+    transform: rotate(0deg);
+    padding-bottom: 30px;
+  }
+
+  .modal-caption-header {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .modal-caption-body {
+    font-size: 1.1rem;
+  }
+}

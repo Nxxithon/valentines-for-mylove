@@ -1,0 +1,115 @@
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  background-color: transparent;
+  width: 100%;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box; /* Important for padding */
+}
+
+/* Ensure content is centered even with sidebar margin */
+.message-content {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  z-index: 10;
+  text-align: center;
+  margin: 0 auto; /* Center specifically */
+}
+
+/* ... rest of styles remain similar ... */
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  font-size: 2rem;
+  color: #ec4899;
+  opacity: 0.6;
+}
+
+.header-text {
+  font-family: 'Great Vibes', cursive, 'Mali', serif;
+  font-size: 3.5rem;
+  color: #ec4899;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(236, 72, 153, 0.2);
+}
+
+.polaroid-frame {
+  background: white;
+  padding: 15px 15px 50px 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08); /* More realistic shadow */
+  transform: rotate(-3deg);
+  margin: 2rem auto;
+  max-width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.polaroid-frame:hover {
+  transform: rotate(0deg) scale(1.05); /* Straighten up on hover */
+}
+
+.polaroid-inner {
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.polaroid-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.polaroid-caption {
+  font-family: 'Gochi Hand', cursive, sans-serif;
+  color: #555;
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+.letter-body {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #4a5568;
+  text-align: left;
+  margin-top: 2rem;
+}
+
+.signature {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: #ec4899;
+  text-align: right;
+  margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+  .message-container {
+    padding: 2rem 1rem;
+    padding-bottom: 5rem; /* Space for fixed button */
+  }
+  .header-text {
+    font-size: 2.5rem;
+  }
+  .message-content {
+    padding: 2rem;
+  }
+}

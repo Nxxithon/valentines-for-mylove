@@ -1,0 +1,78 @@
+.note-container {
+  position: relative;
+  background: #fffef0; /* Yellowish post-it color */
+  padding: 3rem;
+  width: 90%;
+  max-width: 600px; /* Readable width */
+  margin: 2rem auto;
+  box-shadow: 
+    0 10px 20px rgba(0,0,0,0.1), 
+    0 2px 5px rgba(0,0,0,0.05);
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease;
+  z-index: 50;
+  border-radius: 4px; /* Slight round for paper */
+}
+
+/* Tape effect at the top */
+.note-container::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(2deg);
+  width: 150px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.5); /* Semi-transparent tape */
+  border: 1px solid rgba(200, 200, 200, 0.2);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  backdrop-filter: blur(2px);
+}
+
+.note-container:hover {
+  transform: rotate(0deg) scale(1.02);
+  z-index: 60;
+}
+
+.note-header {
+  font-family: 'Great Vibes', cursive, 'Mali', serif;
+  font-size: 3rem;
+  color: #ec4899;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 0px rgba(236, 72, 153, 0.1);
+  border-bottom: 2px dashed #ecc;
+  padding-bottom: 1rem;
+}
+
+.note-body {
+  font-family: 'Gochi Hand', cursive, 'Itim', sans-serif; /* Fallback to existing prompt font */
+  font-size: 1.4rem;
+  line-height: 2; /* Like lined paper */
+  color: #555;
+  background-image: linear-gradient(#eee 1px, transparent 1px);
+  background-size: 100% 2rem; /* Matches line height */
+  padding-top: 0.5rem; /* Align text to lines */
+}
+
+.note-footer {
+  margin-top: 3rem;
+  text-align: right;
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: #ec4899;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+  .note-container {
+    padding: 1.5rem;
+    width: 95%; /* Use more width on mobile */
+  }
+  .note-header {
+    font-size: 2rem;
+  }
+  .note-body {
+    font-size: 1.1rem;
+  }
+}
